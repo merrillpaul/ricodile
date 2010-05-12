@@ -23,7 +23,7 @@ public class ReportHibernateUtil {
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
+            // config file this will be scrapped when we put thsi into neon.
             sessionFactory = new AnnotationConfiguration()
                     .setProperties(DbConnectionPropertiesProvider.getDBProperties())
                     .configure()
