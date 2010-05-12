@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--<property name="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.125.43:1521:NEONTRIV1</property>
+    <property name="hibernate.connection.username">merril</property>
+    <property name="hibernate.connection.password">bullet</property>
+    -->
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.use_sql_comments">false</property>
+    <property name="hibernate.jdbc.use_get_generated_keys">true</property>
+    <property name="hibernate.format_sql">false</property>
+    <property name="hibernate.order_updates">true</property>
+    <property name="hibernate.generate_statistics">false</property>
+    <property name="hibernate.jdbc.use_streams_for_binary">true</property>
+    <property name="hibernate.jdbc.use_scrollable_resultset">true</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping class="com.flytxt.commons.reporting.parameter.objects.Parameter"/>
+    <mapping class="com.flytxt.commons.reporting.chart.entity.ChartConfig"/>
+    <mapping class="com.flytxt.commons.reporting.chart.entity.ChartPromptParameters"/>
+  </session-factory>
+</hibernate-configuration>
