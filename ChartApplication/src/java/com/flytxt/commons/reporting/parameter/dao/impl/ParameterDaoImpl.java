@@ -57,7 +57,12 @@ public class ParameterDaoImpl implements ParameterDao {
     }
 
     public Parameter getParameterByName(String parameterName) throws ParameterProviderException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return
+               (Parameter)
+               this.session.getNamedQuery("Parameter.findByParameterName")
+               .setString("parameterName", parameterName)
+               .uniqueResult();
+
     }
 
     public Collection<ParamComboVO> getParametersAfterExlusion(Collection<Long> exludedParameters) {

@@ -14,7 +14,6 @@ package com.flytxt.commons.reporting.parameter.business.impl;
 
 import com.flytxt.commons.dao.DaoFactory;
 import com.flytxt.commons.reporting.ReportHibernateUtil;
-import com.flytxt.commons.reporting.chart.provider.dao.ChartConfigDao;
 import com.flytxt.commons.reporting.parameter.ParameterProviderException;
 import com.flytxt.commons.reporting.parameter.business.ParameterMasterService;
 import com.flytxt.commons.reporting.parameter.dao.ParameterDao;
@@ -82,7 +81,28 @@ public class ParameterMasterServiceImpl implements ParameterMasterService {
     }
 
     public Parameter getParameterByName(String parameterName) throws ParameterProviderException {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+         ParameterDao dao= null;
+
+        Session session = ReportHibernateUtil.getSession();
+
+        dao = getDao();
+
+        session.beginTransaction();
+        try {
+            Parameter parameter =dao.getParameterByName(parameterName);
+
+            session.getTransaction().commit();
+            return parameter;
+        } catch (ParameterProviderException ex) {
+            Logger.getLogger(ParameterMasterServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            session.getTransaction().rollback();
+            throw ex;
+        }finally{
+            if(session!=null){
+               ReportHibernateUtil.closeSession();
+            }
+        }
     }
 
 
@@ -121,15 +141,7 @@ public class ParameterMasterServiceImpl implements ParameterMasterService {
         }
     }
 
-     private ChartConfigDao getChartConfigDao() {
-        try {
-            return DaoFactory.getDao(ChartConfigDao.class);
-        } catch (Exception ex) {
-            Logger.getLogger(ParameterMasterServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw  new RuntimeException(ex);
-        }
-    }
-
+   
 
 
 
