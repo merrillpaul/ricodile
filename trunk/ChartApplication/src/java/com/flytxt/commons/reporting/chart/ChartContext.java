@@ -11,6 +11,7 @@ package com.flytxt.commons.reporting.chart;
 import com.flytxt.commons.reporting.chart.entity.ChartConfig; 
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
 import com.flytxt.commons.reporting.constants.ChartRenderTarget; 
+import com.flytxt.commons.reporting.context.BaseContext;
 import com.flytxt.commons.reporting.parameter.objects.Parameter;
 import java.util.Collection;
 
@@ -27,19 +28,14 @@ import java.util.Collection;
  * @author Merrill George Paul (merrill.george@gmail.com)
  * 
  */
-public class ChartContext {
+public class ChartContext extends BaseContext {
 
     /**
      *  <p style="margin-top: 0">
      *        Typically logged on user id or chart run userid
      *      </p>
      */
-    private int userId;
-
-    private String userName;
-
-
-    private int partnerId;
+   
 
     /**
      * the chartRenderTarget
@@ -91,33 +87,13 @@ public class ChartContext {
         this.renderTarget = renderTarget;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+   
 
     public void setRendererType(ChartRendererType renderType) {
        this.renderType =  renderType;
     }
 
-    public int getPartnerId() {
-        return partnerId;
-    }
-
-    public void setPartnerId(int partnerId) {
-        this.partnerId = partnerId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+   
 
    
 
