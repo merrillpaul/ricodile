@@ -35,6 +35,7 @@ public class ResultsetAwarePieDatasetCreator extends
                         .addPiece(
                         label,
                         value);
+
                 //pieset.setTooltipText(label+" : "+value);
             }
             resultSet.close();

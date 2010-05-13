@@ -121,16 +121,11 @@ public class JasperQueryExecuter {
 						{
 							Object parameterValue = parameterValues.get(chunk.getText());
                                                         
-                                                        if(parameterValue!=null ){
+                                                        if(parameterValue!=null && Collection.class.isAssignableFrom(parameterValue.getClass()) ){
 
-                                                            Collection collectionValue= null;
-                                                            try{
-                                                            collectionValue = Collection.class.cast(parameterValue);
-                                                            prepareArrayVals(chunk.getText(),sbuffer,collectionValue);
-                                                            }catch(ClassCastException cce){
-                                                                 sbuffer.append("?");
-                                                                parameterNames.add(chunk.getText());
-                                                            }
+                                                           
+                                                            prepareArrayVals(chunk.getText(),sbuffer,(Collection)parameterValue);
+                                                           
 
                                                         }else{
                                                             sbuffer.append("?");

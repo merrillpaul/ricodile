@@ -10,7 +10,6 @@ package com.flytxt.commons.reporting.factory;
 
 import com.flytxt.commons.facade.BusinessServiceFactory;
 import com.flytxt.commons.reporting.ReportServiceResolverException;
-import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.chart.ChartFrameworkExtraAttributesProvider;
 import com.flytxt.commons.reporting.chart.generator.fusioncharts.FusionChartExtraAttributesProvider;
 import com.flytxt.commons.reporting.chart.provider.service.ChartConfigService;
@@ -18,7 +17,9 @@ import com.flytxt.commons.reporting.chart.provider.service.ChartConstantsProvide
 import com.flytxt.commons.reporting.constants.ChartConstants;
 import com.flytxt.commons.reporting.parameter.business.ParameterMasterService;
 import com.flytxt.commons.reporting.parameter.provider.InitialParameterProvider;
+import com.flytxt.commons.reporting.parameter.provider.ParameterParserProvider;
 import com.flytxt.commons.reporting.parameter.provider.impl.InitialParameterProviderImpl;
+import com.flytxt.commons.reporting.parameter.provider.impl.ParameterParserProviderImpl;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,6 +73,10 @@ public final class ServiceFactory {
             Logger.getLogger(ServiceFactory.class.getName()).log(Level.SEVERE, null, ex);
              throw new ReportServiceResolverException(ex);
         }
+    }
+
+    public static ParameterParserProvider getParameterParser(){
+        return new ParameterParserProviderImpl();
     }
 
 }
