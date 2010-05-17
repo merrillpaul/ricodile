@@ -16,6 +16,7 @@ import com.flytxt.commons.reporting.chart.provider.ChartConfigException;
 import com.flytxt.commons.reporting.chart.provider.service.ChartConfigService;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartType;
+import com.flytxt.commons.reporting.context.ReportUser;
 import com.flytxt.commons.reporting.factory.ServiceFactory;
 import com.flytxt.commons.util.RandomStringGenerator;
 import java.util.logging.Level;
@@ -51,7 +52,7 @@ public class PieResultSetChart_1 {
          ChartConfig cfg =  new ChartConfig();
         cfg.setChartQuery("select partner_id \"VALUE\", partner_name" +
                 " \"LABEL\" from partner " +
-                "where partner_id IN $P{FLYTXT_REPORT_PARTNER_ID} and 1=$P{FLYTXT_REPORT_USER_ID}");
+                "where partner_id IN $P{FLYTXT_REPORT_USER_PARTNER_ID} and 1=$P{FLYTXT_REPORT_USER_ID}");
         cfg.setChartTypeAsEnum(ChartType.PIE);
         cfg.setDescription("Status Id Pie Stupid Chart");
         cfg.setHeight(400);
@@ -113,7 +114,7 @@ public class PieResultSetChart_1 {
         ChartContext ctx =
                 ChartContextCreatorFactory
                 .getCreator(ChartRendererType.FUSION)
-                .createChartContext(cfg, 1);
+                .createChartContext(cfg, new ReportUser(1, 1, "Merrill"));
         ChartEngine engine =
         ChartEngineFactory.getEngine(ctx);
         try {
