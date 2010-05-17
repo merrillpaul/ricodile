@@ -7,7 +7,10 @@ public class ColumnBarDataSet extends DataSet {
     public ColumnBarDataSet () {
     }
 
-    public ColumnBarSet addDataSet (String label, String value) {
+    public ColumnBarSet addDataSet (String label, String value, String seriesName) {
+
+
+
         return null;
     }
 

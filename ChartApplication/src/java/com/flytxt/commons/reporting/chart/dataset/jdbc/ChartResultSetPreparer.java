@@ -14,22 +14,20 @@ package com.flytxt.commons.reporting.chart.dataset.jdbc;
 
 import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.chart.dataset.creators.JDBCResultsetAwareCreator;
+import com.flytxt.commons.reporting.chart.entity.ChartPromptParameters;
 import com.flytxt.commons.reporting.connection.ConnectionProvider;
 import com.flytxt.commons.reporting.parameter.ParameterProviderException;
-import com.flytxt.commons.reporting.util.query.JasperQueryExecuter;
+import com.flytxt.commons.reporting.parameter.objects.Parameter;
+import com.flytxt.commons.reporting.util.query.QueryReportPreparedStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.design.JRDesignParameter;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
 
 /**
  *
@@ -54,7 +52,7 @@ public class ChartResultSetPreparer {
             } else {
                 try {
                     pstr = createPreparedStatement(ctx);
-                } catch (JRException ex) {
+                } catch (ParameterProviderException ex) {
                     Logger.getLogger(ChartResultSetPreparer.class.getName()).log(Level.SEVERE, null, ex);
                     throw new ParameterProviderException(ex);
                 }
@@ -88,23 +86,25 @@ public class ChartResultSetPreparer {
         }
      }
 
-    private PreparedStatement createPreparedStatement(ChartContext ctx) throws JRException {
+    
+
+    private PreparedStatement createPreparedStatement(ChartContext ctx) throws ParameterProviderException {
 
         String query = ctx.getChart().getChartQuery();
-        Map<String,Object> params =  new HashMap<String, Object>();
-        params.put("FLYTXT_REPORT_USER_ID", ctx.getUserId());
-        params.put("FLYTXT_REPORT_USER_NAME", "Merrill");
-        ArrayList<Integer> arra = new ArrayList<Integer>();
-        arra.add(10040);
-        arra.add(1);
-        params.put("FLYTXT_REPORT_PARTNER_ID",arra);
 
-        Map<String,JRDesignParameter> jrParameters =
-                JasperQueryExecuter.buildJRDesignParameters(params);
-        JRDesignQuery jrQuery = new JRDesignQuery();
-        jrQuery.setText(query);
-        return JasperQueryExecuter.getStatement(jrQuery, jrParameters, params, con);
-        
+        Collection<Parameter> filledParameters =
+                null;
+
+        if(ctx.getChart().getChartPromptParameters()!=null){
+            filledParameters =  new ArrayList<Parameter>();
+            for(ChartPromptParameters promptParameter : ctx.getChart().getChartPromptParameters()){
+
+                filledParameters.add(promptParameter.getParameter());
+
+            }
+        }
+
+        return new QueryReportPreparedStatement(query, ctx, con).getStatement(filledParameters);
         
     }
 

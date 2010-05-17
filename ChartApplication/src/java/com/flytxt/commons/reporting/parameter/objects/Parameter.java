@@ -19,7 +19,7 @@ import javax.persistence.Transient;
 
 
 @Entity
-@Table(name = "REP_FWK_PARAMATER_MST")
+@Table(name = "REP_FWK_PARAMETER_MST")
 @NamedQueries(
     {
         @NamedQuery(name = "Parameter.findAll",

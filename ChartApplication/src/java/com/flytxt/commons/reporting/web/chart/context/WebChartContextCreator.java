@@ -15,6 +15,7 @@ package com.flytxt.commons.reporting.web.chart.context;
 import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.chart.ChartContextCreator;
 import com.flytxt.commons.reporting.chart.entity.ChartConfig;
+import com.flytxt.commons.reporting.context.ReportUser;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -32,8 +33,17 @@ public class WebChartContextCreator implements ChartContextCreator {
 
 
 
-    public ChartContext createChartContext(ChartConfig chart, Integer userId) {
-        return creator.createChartContext(chart, userId);
+    public ChartContext createChartContext(ChartConfig chart, ReportUser user) {
+
+        // TODO create ReportUser from looged on user
+        // using this.request.getSession
+         ///////// This is a test
+        Integer userId= 1;
+        Integer partnerId = 1;
+        String userName = "Merrill";
+        ///////////////////////////
+
+        return creator.createChartContext(chart, new ReportUser(userId, partnerId, userName));
     }
 
     private ChartContextCreator creator;

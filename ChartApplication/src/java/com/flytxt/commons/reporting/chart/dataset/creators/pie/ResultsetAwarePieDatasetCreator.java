@@ -28,8 +28,8 @@ public class ResultsetAwarePieDatasetCreator extends
             ResultSet resultSet = this.resultSetPreparer.getResultSet(this, chartContext);
             while (resultSet.next()) {
                 
-                String value = resultSet.getString("VALUE");
-                String label =resultSet.getString("LABEL");
+                String value = resultSet.getString(1/*"VALUE"*/);
+                String label =resultSet.getString(2/*"LABEL"*/);
                 PieSet pieset =
                         this.getDataSet()
                         .addPiece(

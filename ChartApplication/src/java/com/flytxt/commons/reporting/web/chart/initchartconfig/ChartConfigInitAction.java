@@ -15,6 +15,7 @@ import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.factory.ServiceFactory;
 import com.flytxt.commons.util.RandomStringGenerator;
 import com.flytxt.commons.reporting.chart.entity.ChartConfig;
+import com.flytxt.commons.reporting.context.ReportUser;
 import com.flytxt.commons.reporting.parameter.vo.InitParamVO;
 import com.flytxt.commons.reporting.web.chart.ChartBaseAction;
 import com.flytxt.commons.reporting.web.chart.initchartconfig.json.ChartInitJsonMap;
@@ -99,7 +100,7 @@ public class ChartConfigInitAction extends ChartBaseAction {
             throws Exception {
         
         ChartConfigInitForm initForm = (ChartConfigInitForm)form;
-        Integer userId= 1;
+       
 
         Long chartId = initForm.getChartId();
         InitParamVO[] initParams = initForm.getChartInitParams();
@@ -112,7 +113,7 @@ public class ChartConfigInitAction extends ChartBaseAction {
 
 
         ChartContextCreator creator = getChartContextCreator(request);
-        ChartContext context = creator.createChartContext(chart, userId);
+        ChartContext context = creator.createChartContext(chart, null/*new ReportUser(userId, partnerId, userName)*/);
         prepareInitialParameterValues(context,initParams);
         getChartRunSessionMapper(request).addContext(chartRunSessionId, context);
 
