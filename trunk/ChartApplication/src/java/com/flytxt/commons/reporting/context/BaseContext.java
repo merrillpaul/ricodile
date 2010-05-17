@@ -8,38 +8,52 @@
  */
 package com.flytxt.commons.reporting.context;
 
+import com.flytxt.commons.reporting.parameter.objects.Parameter;
+import java.io.Serializable;
+import java.util.Collection;
+
 /**
  *
  * @author Merrill George (merrill.george@gmail.com)
  */
-public abstract class BaseContext {
-    protected int userId;
+public abstract class BaseContext implements Serializable{
 
-    protected String userName;
+    protected ReportUser user;
 
-    protected int partnerId;
+     /**
+     * encapsulates the initial set of parameters when the chart is initialized
+     * or requested
+     */
+    protected Collection<Parameter> initialParameters;
 
     public int getPartnerId() {
-        return partnerId;
+        return user.getPartnerId();
     }
 
-    public void setPartnerId(int partnerId) {
-        this.partnerId = partnerId;
-    }
+   
 
     public int getUserId() {
-        return userId;
+        return user.getUserId();
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+ 
 
     public String getUserName() {
-        return userName;
+        return user.getUserName();
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+   
+
+     public Collection<Parameter> getInitialParameters() {
+        return initialParameters;
     }
+
+    public void setInitialParameters(Collection<Parameter> initialParameters) {
+        this.initialParameters = initialParameters;
+    }
+
+    public void setUser(ReportUser user) {
+       this.user=  user;
+    }
+
 }

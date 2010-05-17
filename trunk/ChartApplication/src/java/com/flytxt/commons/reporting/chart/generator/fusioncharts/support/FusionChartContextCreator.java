@@ -13,6 +13,7 @@ import com.flytxt.commons.reporting.chart.ChartContextCreator;
 import com.flytxt.commons.reporting.chart.entity.ChartConfig;
 import com.flytxt.commons.reporting.constants.ChartConstants;
 import com.flytxt.commons.reporting.constants.ChartRenderTarget;
+import com.flytxt.commons.reporting.context.ReportUser;
 
 /**
  *
@@ -20,11 +21,11 @@ import com.flytxt.commons.reporting.constants.ChartRenderTarget;
  */
 public class FusionChartContextCreator implements ChartContextCreator {
     
-    public ChartContext createChartContext(ChartConfig chart, Integer userId) {
+    public ChartContext createChartContext(ChartConfig chart, ReportUser user) {
         ChartContext ctx =  new ChartContext();
         ctx.setRenderTarget(ChartRenderTarget.AT_CLIENT);
         ctx.setRendererType(ChartConstants.ChartRendererType.FUSION);
-        ctx.setUserId(userId);
+        ctx.setUser(user);
         ctx.setChart(chart);
         
         return ctx;

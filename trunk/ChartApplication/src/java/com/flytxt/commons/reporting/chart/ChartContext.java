@@ -12,8 +12,6 @@ import com.flytxt.commons.reporting.chart.entity.ChartConfig;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
 import com.flytxt.commons.reporting.constants.ChartRenderTarget; 
 import com.flytxt.commons.reporting.context.BaseContext;
-import com.flytxt.commons.reporting.parameter.objects.Parameter;
-import java.util.Collection;
 
 
 /**
@@ -43,11 +41,7 @@ public class ChartContext extends BaseContext {
     private ChartRenderTarget renderTarget;
 
 
-    /**
-     * encapsulates the initial set of parameters when the chart is initialized
-     * or requested
-     */
-    private Collection<Parameter> initialParameters;
+   
 
     public ChartRendererType getRenderType() {
         return renderType;
@@ -71,13 +65,7 @@ public class ChartContext extends BaseContext {
         this.chart = chart;
     }
 
-    public Collection<Parameter> getInitialParameters() {
-        return initialParameters;
-    }
-
-    public void setInitialParameters(Collection<Parameter> initialParameters) {
-        this.initialParameters = initialParameters;
-    }
+   
 
     public ChartRenderTarget getRenderTarget() {
         return renderTarget;
@@ -92,6 +80,7 @@ public class ChartContext extends BaseContext {
     public void setRendererType(ChartRendererType renderType) {
        this.renderType =  renderType;
     }
+
 
    
 
