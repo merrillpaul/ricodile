@@ -23,4 +23,10 @@ public class ReportConstants {
         FLYTXT_REPORT_USER_NAME,
         FLYTXT_REPORT_USER_PARTNER_ID;
     }
+
+
+    public interface DateFormats{
+        public static final String DATE_FORMAT="dd-MMM-yyyy";
+        public static final String TIME_FORMAT="dd-MMM-yyyy HH:mm:ss";
+    }
 }

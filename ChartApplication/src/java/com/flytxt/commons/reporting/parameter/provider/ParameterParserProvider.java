@@ -36,6 +36,9 @@ public interface ParameterParserProvider {
     Collection<ParameterValue> getParameterValues(String parameterName,
             Map<String,Object> filledUpParams) throws ParameterProviderException;
 
-    Map<String,Object> toMapFromFilledParameter(Parameter parameter);
+    Map<String,Object> toMapFromFilledParameter(Parameter parameter)
+            throws ParameterProviderException;
+
+    Collection<String> getQueryInlineProvidedParameterNames(String queryString);
 
 }

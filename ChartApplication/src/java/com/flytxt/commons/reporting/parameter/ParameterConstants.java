@@ -21,13 +21,13 @@ public final class ParameterConstants {
 
     public enum Type {
 
-        DATE("d"),
+       // DATE("d"),
 
         LIST("l"),
 
         QUERY("q"),
 
-        BOOLEAN("b"),
+       // BOOLEAN("b"),
 
         TEXT("s"),
 
@@ -81,6 +81,8 @@ public final class ParameterConstants {
         BIGDECIMAL("bd"),
 
         DATE("dt"),
+
+        SQLDATE("sd"),
 
         TIMESTAMP("t"),
 

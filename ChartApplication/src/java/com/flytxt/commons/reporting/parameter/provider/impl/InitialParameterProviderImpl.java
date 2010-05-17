@@ -49,7 +49,7 @@ public class InitialParameterProviderImpl implements InitialParameterProvider {
         Collection<ParameterValue> paramValues = new ArrayList<ParameterValue>();
         for(String val:vals){
             ParameterValue paramvalue = new ParameterValue();
-            switch(classType){
+           /* switch(classType){
                 case STRING:
                     paramvalue.setValue(val);
                     break;
@@ -83,7 +83,8 @@ public class InitialParameterProviderImpl implements InitialParameterProvider {
                 case DOUBLE:
                     paramvalue.setValue(Double.valueOf(val));
                     break;
-            }
+            }*/
+            paramvalue.setValue(value);
             paramValues.add(paramvalue);
 
         }

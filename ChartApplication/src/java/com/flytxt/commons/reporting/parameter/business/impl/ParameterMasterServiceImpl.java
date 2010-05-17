@@ -66,7 +66,7 @@ public class ParameterMasterServiceImpl implements ParameterMasterService {
         session.beginTransaction();
         try {
             Parameter parameter =dao.getParameter(parameterId);
-
+            parameter =Parameter.cloneAll(parameter);
             session.getTransaction().commit();
             return parameter;
         } catch (ParameterProviderException ex) {
@@ -91,7 +91,7 @@ public class ParameterMasterServiceImpl implements ParameterMasterService {
         session.beginTransaction();
         try {
             Parameter parameter =dao.getParameterByName(parameterName);
-
+            parameter =Parameter.cloneAll(parameter);
             session.getTransaction().commit();
             return parameter;
         } catch (ParameterProviderException ex) {

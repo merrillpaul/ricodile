@@ -71,7 +71,7 @@ public class Parameter implements Serializable {
     private String defaultValue;
 
 
-    @Column(name = "CLASS_TYPE", nullable = false, length = 2)
+    @Column(name = "CLASS_TYPE", nullable = false)
     public String getClassType() {
         return classType;
     }
@@ -80,7 +80,7 @@ public class Parameter implements Serializable {
         this.classType = classType;
     }
 
-    @Column(name = "DATA", length = 4000)
+    @Column(name = "DATA")
     public String getData() {
         return data;
     }
@@ -89,7 +89,7 @@ public class Parameter implements Serializable {
         this.data = data;
     }
 
-    @Column(name = "DEFAULT_VALUE", length = 4000)
+    @Column(name = "DEFAULT_VALUE")
     public String getDefaultValue() {
         return defaultValue;
     }
@@ -98,7 +98,7 @@ public class Parameter implements Serializable {
         this.defaultValue = defaultValue;
     }
 
-    @Column(name = "DESCRIPTION", length = 4000)
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
@@ -130,7 +130,7 @@ public class Parameter implements Serializable {
         this.multiselect = multiselect;
     }
 
-    @Column(name = "PARAMETER_NAME", nullable = false, length = 500, unique=true)
+    @Column(name = "PARAMETER_NAME", nullable = false, unique=true)
     public String getParameterName() {
         return parameterName;
     }
@@ -139,7 +139,7 @@ public class Parameter implements Serializable {
         this.parameterName = parameterName;
     }
 
-    @Column(name = "PARAMETER_TYPE", nullable = false, length = 2)
+    @Column(name = "PARAMETER_TYPE", nullable = false)
     public String getParameterType() {
         return parameterType;
     }
@@ -249,6 +249,7 @@ public class Parameter implements Serializable {
         p1.setMultiselect(p.isMultiselect());
         p1.setParameterName(p.getParameterName());
         p1.setParameterType(p.getParameterType());
+       // p1.setType(p.getType());
         return p1;
     }
 
