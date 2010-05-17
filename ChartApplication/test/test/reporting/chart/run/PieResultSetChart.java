@@ -16,6 +16,7 @@ import com.flytxt.commons.reporting.chart.provider.ChartConfigException;
 import com.flytxt.commons.reporting.chart.provider.service.ChartConfigService;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartType;
+import com.flytxt.commons.reporting.context.ReportUser;
 import com.flytxt.commons.reporting.factory.ServiceFactory;
 import com.flytxt.commons.util.RandomStringGenerator;
 import java.util.logging.Level;
@@ -102,7 +103,7 @@ public class PieResultSetChart {
         ChartContext ctx =
                 ChartContextCreatorFactory
                 .getCreator(ChartRendererType.FUSION)
-                .createChartContext(cfg, 1);
+               .createChartContext(cfg, new ReportUser(1, 1, "Merrill"));
         ChartEngine engine =
         ChartEngineFactory.getEngine(ctx);
         try {
