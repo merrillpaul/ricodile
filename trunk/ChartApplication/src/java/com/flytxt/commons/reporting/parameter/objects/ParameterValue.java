@@ -7,7 +7,7 @@ public class ParameterValue {
 
     private Integer id;
 
-    private Object value;
+    private String value;
 
     public Integer getId() {
         return id;
@@ -17,11 +17,11 @@ public class ParameterValue {
         this.id = id;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

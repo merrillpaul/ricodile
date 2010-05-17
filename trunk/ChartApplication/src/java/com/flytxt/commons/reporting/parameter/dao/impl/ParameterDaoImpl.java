@@ -14,7 +14,6 @@ package com.flytxt.commons.reporting.parameter.dao.impl;
 
 
 import com.flytxt.commons.reporting.ReportHibernateUtil;
-import com.flytxt.commons.reporting.chart.entity.ChartPromptParameters;
 import com.flytxt.commons.reporting.parameter.ParameterProviderException;
 import com.flytxt.commons.reporting.parameter.dao.ParameterDao;
 import com.flytxt.commons.reporting.parameter.objects.Parameter;
