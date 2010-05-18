@@ -59,6 +59,8 @@ public class ChartConfig implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static ChartConfig cloneForAll(ChartConfig config) {
+        if(config==null)
+            return null;
        ChartConfig chart = new ChartConfig();
        chart.setChartId(config.getChartId());
        chart.setChartType(config.getChartType());
