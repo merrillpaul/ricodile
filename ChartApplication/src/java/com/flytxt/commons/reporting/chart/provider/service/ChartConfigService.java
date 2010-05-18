@@ -25,6 +25,8 @@ public interface ChartConfigService extends BusinessService {
 
     ChartConfig getChartConfig(Long chartId);
 
+    ChartConfig getChartConfig(String chartName);
+
     ChartConfig saveChartConfig(ChartConfig chart) throws ChartConfigException;
 
     void deleteChartConfig(Long chartId) throws ChartConfigException;

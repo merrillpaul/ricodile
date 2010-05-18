@@ -50,6 +50,27 @@ public class ChartConfigServiceImpl implements ChartConfigService {
         return config;
     }
 
+
+    public ChartConfig getChartConfig(String chartName) {
+
+        ChartConfig config = null;
+        Session session = ReportHibernateUtil.getSession();
+        session.beginTransaction();
+        try {
+            config = getChartConfigDao().getChartConfig(chartName);
+
+             config =  ChartConfig.cloneForAll(config);
+            session.getTransaction().commit();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        }finally{
+            ReportHibernateUtil.closeSession();
+        }
+        return config;
+    }
+
     public ChartConfig saveChartConfig(ChartConfig chart) throws ChartConfigException {
 
         Session session = ReportHibernateUtil.getSession();
