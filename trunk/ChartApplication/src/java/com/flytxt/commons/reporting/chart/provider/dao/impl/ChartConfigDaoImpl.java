@@ -26,6 +26,7 @@ public class ChartConfigDaoImpl implements ChartConfigDao {
     private final Session session;
 
 
+
     public ChartConfigDaoImpl() {
           this.session = ReportHibernateUtil.getSession();
     }
@@ -88,6 +89,13 @@ public class ChartConfigDaoImpl implements ChartConfigDao {
         result = (Integer)q.uniqueResult();
 
         return result==0?false:true;
+    }
+
+    public ChartConfig getChartConfig(String chartName) {
+
+        return
+               (ChartConfig) this.session.getNamedQuery("ChartConfig.findByName")
+                .setParameter("name", chartName).uniqueResult();
     }
 
 }

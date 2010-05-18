@@ -20,9 +20,11 @@ import com.flytxt.commons.reporting.chart.entity.ChartConfig;
 public interface ChartConfigDao extends Dao {
     ChartConfig getChartConfig(Long chartId);
 
-    public ChartConfig saveChartConfig(ChartConfig chart);
+    ChartConfig saveChartConfig(ChartConfig chart);
 
     void deleteChart(Long chartId);
 
     boolean isParameterUsed(Long parameterId);
+
+    ChartConfig getChartConfig(String chartName);
 }
