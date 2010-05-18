@@ -87,6 +87,7 @@ public class QueryReportPreparedStatement extends  ReportParameterParserUtil{
         Collection<String> extraParamsInQuery =  new ArrayList<String>();
         for(String paramStringInQuery : inlineQueryParams){
             if(!filledUpParams.containsKey(paramStringInQuery)){
+                if(!extraParamsInQuery.contains(paramStringInQuery))
                 extraParamsInQuery.add(paramStringInQuery);
             }
         }

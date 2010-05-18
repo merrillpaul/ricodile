@@ -9,7 +9,7 @@ package com.flytxt.commons.reporting.chart.dataset.base;
  */
 public abstract class Category extends DrilldownableData {
 
-    private String label;
+    protected String label;
 
     private String tooltipText;
 

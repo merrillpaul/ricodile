@@ -1,10 +1,11 @@
 package com.flytxt.commons.reporting.chart.dataset.creators.columnbar;
 
 
-import com.flytxt.commons.reporting.chart.dataset.base.columnbar.ColumnBarDataSet;
+
+import com.flytxt.commons.reporting.chart.dataset.base.multiseries.columnbar.MultiseriesColumnBarDataSet;
 import com.flytxt.commons.reporting.chart.dataset.creators.AbstractDatasetCreator; 
 
-public abstract class SimpleColumnBarDatasetCreator extends AbstractDatasetCreator<ColumnBarDataSet> {
+public abstract class SimpleColumnBarDatasetCreator extends AbstractDatasetCreator<MultiseriesColumnBarDataSet> {
 
   
 
@@ -14,8 +15,8 @@ public abstract class SimpleColumnBarDatasetCreator extends AbstractDatasetCreat
      *      </p>
      */
     @Override
-    protected ColumnBarDataSet initializeDataset() {
-       ColumnBarDataSet p =  new ColumnBarDataSet();
+    protected /*ColumnBarDataSet*/MultiseriesColumnBarDataSet initializeDataset() {
+       MultiseriesColumnBarDataSet p =  new MultiseriesColumnBarDataSet();
        return p;
     }
 
