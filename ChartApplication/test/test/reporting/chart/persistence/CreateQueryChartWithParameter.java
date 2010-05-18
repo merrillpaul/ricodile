@@ -116,7 +116,7 @@ public class CreateQueryChartWithParameter {
 
 
 
-
+/*
         ChartConfigService service = null;
         try {
             service = ServiceFactory.getChartConfigService();
@@ -130,7 +130,7 @@ public class CreateQueryChartWithParameter {
             Logger.getLogger(CreateQueryChartWithParameter.class.getName()).log(Level.SEVERE, null, ex);
             fail(ex.getMessage());
         }
-
+*/
        
 
     }
@@ -156,7 +156,7 @@ public class CreateQueryChartWithParameter {
         cfg.setDescription("Status Id COlumn Stupid Chart");
         cfg.setHeight(400);
         cfg.setWidth(500);
-        cfg.setName("Stupid COLUMN"+new RandomStringGenerator().getRandomString(3));
+        cfg.setName("MERRILL COLUMN");
         cfg.setShowLegend(true);
         cfg.setShowTitle(true);
 

@@ -25,7 +25,7 @@
             <table>
                 <tr>
                     <td>Chart Id</td>
-                    <td><input type="text" name="chartId"/></td>
+                    <td><input type="text" name="chartName"/></td>
                 </tr>
                 
                  <tr>
