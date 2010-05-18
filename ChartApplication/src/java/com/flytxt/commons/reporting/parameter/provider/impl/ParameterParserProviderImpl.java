@@ -371,6 +371,7 @@ public class ParameterParserProviderImpl implements ParameterParserProvider{
         Collection<String> extraParamsInQuery =  new ArrayList<String>();
         for(String paramStringInQuery : inlineParamNames){
             if(!filledUpParams.containsKey(paramStringInQuery)){
+                if(!extraParamsInQuery.contains(paramStringInQuery))
                 extraParamsInQuery.add(paramStringInQuery);
             }
         }

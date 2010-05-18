@@ -46,6 +46,7 @@ public class JasperQueryExecuter {
 	private Map<String,Object> parameterValues = null;
 	private String queryString = "";
 	private List parameterNames = new ArrayList();
+        private Map<String,Integer> augmentedParamNames;
 
 
 	/**
@@ -96,6 +97,7 @@ public class JasperQueryExecuter {
 	{
 		queryString = "";
 		parameterNames = new ArrayList();
+                augmentedParamNames =  new HashMap<String,Integer>();
 
 		if (query != null)
 		{
@@ -169,7 +171,11 @@ public class JasperQueryExecuter {
 					Object parameterValue = null;
 					for(int i = 0; i < parameterNames.size(); i++)
 					{
-						parameterName = (String)parameterNames.get(i);
+						
+                                               
+                                                parameterName = (String)parameterNames.get(i);
+                                                if(augmentedParamNames.containsKey(parameterValue))
+                                                    continue;
 						parameter = (JRParameter)parametersMap.get(parameterName);
 						clazz = parameter.getValueClass();
 						//FIXMEparameterValue = jrParameter.getValue();
@@ -340,27 +346,41 @@ public class JasperQueryExecuter {
     private void prepareArrayVals(String paramName,StringBuffer sbuffer, Collection collection) {
        if(collection.isEmpty()){
             sbuffer.append("(?)");
-            parameterValues.put(paramName,null);
-            parameterNames.add(paramName);
-            parametersMap.remove(paramName);
+           
+            //parametersMap.remove(paramName);
+            Integer occurence = augmentedParamNames.get(paramName)==null?0:augmentedParamNames.get(paramName);
+            augmentedParamNames.put(paramName, occurence+1);
+
+            //parameterValues.put(paramName,null);
+            //parameterNames.add(paramName);
+            String newParamName = paramName+"_"+augmentedParamNames.get(paramName);
+            parameterValues.put(newParamName,null);
+            parameterNames.add(newParamName);
             JRDesignParameter jrParameter = new JRDesignParameter();
-            jrParameter.setName(paramName);
+            jrParameter.setName(newParamName);
             jrParameter.setValueClass(String.class);
-            parametersMap.put(paramName,jrParameter);
+            //parametersMap.put(paramName,jrParameter);
+            parametersMap.put(newParamName,jrParameter);
        }else{
            int i=0;
            sbuffer.append("(");
-           parameterValues.remove(paramName);
-           parametersMap.remove(paramName);
+           //parameterValues.remove(paramName);
+           //parametersMap.remove(paramName);
+           Integer occurence = augmentedParamNames.get(paramName)==null?0:augmentedParamNames.get(paramName);
+           augmentedParamNames.put(paramName, occurence+1);
+
            Map<String,Object> newParamValues = new HashMap<String, Object>();
            for(Object obj : collection){
                i++;
-               String newParamName = paramName+"_"+i;
+               String newParamName = paramName+"_"+i+"_OCC"+"_"+augmentedParamNames.get(paramName);
                 parameterNames.add(newParamName);
                sbuffer.append("?");
+
                if(obj.getClass().equals(Integer.class)){
                     newParamValues.put(newParamName,(Integer)obj);
                }
+
+               // TODO for others
 
                if(i < collection.size()){
                     sbuffer.append(",");
