@@ -102,20 +102,23 @@ public class ChartConfigInitAction extends ChartBaseAction {
         ChartConfigInitForm initForm = (ChartConfigInitForm)form;
        
 
-        Long chartId = initForm.getChartId();
+        //Long chartId = initForm.getChartId();
+        String chartName =(String)initForm.get("chartName");
         InitParamVO[] initParams = initForm.getChartInitParams();
         
         String chartRunSessionId =
                 "ChartRun_"+new RandomStringGenerator().getRandomString(10);
 
         ChartConfig chart =  ServiceFactory.getChartConfigService()
-                .getChartConfig(chartId);
+                .getChartConfig(chartName);
 
-
-        ChartContextCreator creator = getChartContextCreator(request);
-        ChartContext context = creator.createChartContext(chart, null/*new ReportUser(userId, partnerId, userName)*/);
-        prepareInitialParameterValues(context,initParams);
-        getChartRunSessionMapper(request).addContext(chartRunSessionId, context);
+        ChartContext context =  null;
+        if(chart!=null){
+            ChartContextCreator creator = getChartContextCreator(request);
+            context = creator.createChartContext(chart, null/*new ReportUser(userId, partnerId, userName)*/);
+            prepareInitialParameterValues(context,initParams);
+            getChartRunSessionMapper(request).addContext(chartRunSessionId, context);
+        }
 
         ChartJsonMap json = new ChartInitJsonMap(chartRunSessionId, context);
         return ChartJsonEmitter.emitJson(json, request,response);

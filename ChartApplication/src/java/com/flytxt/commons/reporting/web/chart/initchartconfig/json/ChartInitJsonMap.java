@@ -43,7 +43,7 @@ public class ChartInitJsonMap extends AbstractChartJsonMap {
   
     public ChartJsonMap buildMap() {
        this.data.put(CHART_RUN_SESSION_ID, this.chartRunSessionId);
-       if(this.context.getChart()!=null){
+       if(this.context!=null && this.context.getChart()!=null ){
            this.data.put(CHART_ID, this.context.getChart().getChartId());
            this.data.putAll(new FrameworkAttributesJsonMap(context).buildMap().getMap());
            this.data.putAll(new ChartInfoJsonMap(context.getChart()).buildMap().getMap());
