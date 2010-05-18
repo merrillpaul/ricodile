@@ -46,6 +46,7 @@ public class ConvColumnBarChart {
     private static ParameterMasterService service;
 
      private static Collection<Long> parameterIds;
+    private String chartName;
     public ConvColumnBarChart() {
     }
 
@@ -149,6 +150,7 @@ public class ConvColumnBarChart {
         assertNotNull(cfg.getChartId());
         assertNotSame(cfg.getChartId(),0);
         this.chartId = cfg.getChartId();
+        this.chartName = cfg.getName();
     }
 
     @After
@@ -180,7 +182,7 @@ public class ConvColumnBarChart {
             Logger.getLogger(ConvCurveColumnChart.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        ChartConfig cfg = service.getChartConfig(chartId);
+        ChartConfig cfg = service.getChartConfig(chartName);
 
         ChartContext ctx =
                 ChartContextCreatorFactory

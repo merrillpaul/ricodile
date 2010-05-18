@@ -44,7 +44,7 @@ public class FusionColumnChartGenerator extends AbstractFusionChartGenerator {
         for(String sereisName : _dataSet.getSeriesNames()){
             Dataset ds =
             column3d.createDatasetNode();
-            ds.setShowValues(sereisName);
+             ds.setSeriesName(sereisName);
             dataSets.put(sereisName, ds);
         }
 

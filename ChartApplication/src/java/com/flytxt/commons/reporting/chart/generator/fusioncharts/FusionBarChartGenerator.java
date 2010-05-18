@@ -45,7 +45,7 @@ public class FusionBarChartGenerator extends AbstractFusionChartGenerator {
         Map<String, Dataset> dataSets = new HashMap<String, Dataset>();
         for(String sereisName : _dataSet.getSeriesNames()){
             Dataset ds =  column3d.createDatasetNode();
-            ds.setShowValues(sereisName);
+            ds.setSeriesName(sereisName);
             dataSets.put(sereisName, ds);
         }
 
