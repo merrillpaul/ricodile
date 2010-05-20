@@ -29,4 +29,19 @@ public class ReportConstants {
         public static final String DATE_FORMAT="dd-MMM-yyyy";
         public static final String TIME_FORMAT="dd-MMM-yyyy HH:mm:ss";
     }
+
+
+    public enum ContentTypes{
+        CONTENT_TYPE_HTML("text/html"),
+        CONTENT_TYPE_PLAIN("text/plain");
+        private String contentType;
+
+        private ContentTypes(String contentType){
+            this.contentType = contentType;
+        }
+
+        public String getKey(){
+            return this.contentType;
+        }
+    }
 }
