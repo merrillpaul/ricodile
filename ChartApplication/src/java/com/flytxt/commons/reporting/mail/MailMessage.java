@@ -16,6 +16,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import static com.flytxt.commons.reporting.mail.MailConstants.RecipientType;
 
 /**
  *
@@ -23,121 +24,153 @@ import java.util.StringTokenizer;
  */
 public class MailMessage implements Serializable {
 
-
     private String sender;
     private String subject;
     private String text;
-
-
-    private List<String> recipients = new ArrayList<String>();
     private List<String> attachments = new ArrayList<String>();
-
     private List<ByteArrayDataSource> htmlImageDataSources = new ArrayList<ByteArrayDataSource>();
-
     private ByteArrayDataSource byteArrayDataSource;
+    private List<String> toRecipients = new ArrayList<String>();
+    private List<String> ccRecipients = new ArrayList<String>();
+    private List<String> bccRecipients = new ArrayList<String>();
 
-	public MailMessage()
-	{
-	}
+    public MailMessage() {
+    }
 
-	public String getSender()
-	{
-		return sender==null?MailSessionPropertiesProvider.getReportsSender():sender;
-	}
+    public String getSender() {
+        return sender == null ? MailSessionPropertiesProvider.getReportsSender() : sender;
+    }
 
-	public void setSender(String sender)
-	{
-		this.sender = sender;
-	}
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
 
-	public List<String> getRecipients()
-	{
-		return recipients;
-	}
+    public List<String> getToRecipients() {
+        return toRecipients;
+    }
 
-	public void setRecipients(List<String> recipients)
-	{
-		this.recipients = recipients;
-	}
+    public void setToRecipients(List<String> recipients) {
+        this.toRecipients = recipients;
+    }
 
-	public String getSubject()
-	{
-		return subject;
-	}
+    public List<String> getCcRecipients() {
+        return ccRecipients;
+    }
 
-	public void setSubject(String subject)
-	{
-		this.subject = subject;
-	}
+    public void setCcRecipients(List<String> recipients) {
+        this.ccRecipients = recipients;
+    }
 
-	public String getText()
-	{
-		return text;
-	}
+    public List<String> getBccRecipients() {
+        return bccRecipients;
+    }
 
-	public void setText(String text)
-	{
-		this.text = text;
-	}
+    public void setBccRecipients(List<String> recipients) {
+        this.bccRecipients = recipients;
+    }
 
-	public ByteArrayDataSource getByteArrayDataSource()
-	{
-		return byteArrayDataSource;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public void setByteArrayDataSource(ByteArrayDataSource byteArrayDataSource)
-	{
-		this.byteArrayDataSource = byteArrayDataSource;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public List<String> getAttachments()
-	{
-		return attachments;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void addAttachment(String fileName)
-	{
-		attachments.add(fileName);
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public void addRecepient(String recipient)
-	{
-		recipients.add(recipient);
-	}
+    public ByteArrayDataSource getByteArrayDataSource() {
+        return byteArrayDataSource;
+    }
 
-	public String formatRecipients(String delimiter)
-	{
-		String addresses = "";
+    public void setByteArrayDataSource(ByteArrayDataSource byteArrayDataSource) {
+        this.byteArrayDataSource = byteArrayDataSource;
+    }
 
-		for (int i = 0; i < recipients.size(); i++)
-		{
-			addresses += recipients.get(i) + delimiter;
-		}
+    public List<String> getAttachments() {
+        return attachments;
+    }
 
-		return addresses.substring(0, addresses.length() - 1);
-	}
+    public void addAttachment(String fileName) {
+        attachments.add(fileName);
+    }
 
-	public void parseRecipients(String value)
-	{
-		StringTokenizer st = new StringTokenizer(value, "\t\n\r\f;,|");
+    public void addRecepient(String recipient, RecipientType recipientType) {
 
-		recipients = new ArrayList<String>();
-
-		while (st.hasMoreElements())
-		{
-			recipients.add(st.nextToken());
-		}
-	}
-
-	public List<ByteArrayDataSource> getHtmlImageDataSources()
-	{
-		return htmlImageDataSources;
-	}
-
-	public void addHtmlImageDataSources(ArrayList<ByteArrayDataSource> htmlImageDataSources)
-	{
-		this.htmlImageDataSources.addAll(htmlImageDataSources);
-	}
+        switch (recipientType) {
+            case TO:
+                toRecipients.add(recipient);
+                break;
+            case CC:
+                ccRecipients.add(recipient);
+                break;
+            case BCC:
+                bccRecipients.add(recipient);
+                break;
+        }
 
 
+    }
+
+    public String formatRecipients(String delimiter, RecipientType recipientType) {
+        String addresses = "";
+        List<String> targetList = null;
+        switch (recipientType) {
+            case TO:
+                targetList = toRecipients;
+                break;
+            case CC:
+                targetList = ccRecipients;
+                break;
+            case BCC:
+                targetList = bccRecipients;
+                break;
+        }
+
+        for (int i = 0; i < targetList.size(); i++) {
+            addresses += targetList.get(i) + delimiter;
+        }
+
+        return addresses.substring(0, addresses.length() - 1);
+    }
+
+    public void parseRecipients(String value, RecipientType recipientType) {
+
+        List<String> targetList = new ArrayList<String>();
+
+        switch (recipientType) {
+            case TO:
+                toRecipients = targetList;
+                break;
+            case CC:
+                ccRecipients = targetList;
+                break;
+            case BCC:
+                bccRecipients = targetList;
+                break;
+        }
+
+
+        StringTokenizer st = new StringTokenizer(value, "\t\n\r\f;,|");
+
+
+
+        while (st.hasMoreElements()) {
+            targetList.add(st.nextToken());
+        }
+    }
+
+    public List<ByteArrayDataSource> getHtmlImageDataSources() {
+        return htmlImageDataSources;
+    }
+
+    public void addHtmlImageDataSources(ArrayList<ByteArrayDataSource> htmlImageDataSources) {
+        this.htmlImageDataSources.addAll(htmlImageDataSources);
+    }
 }
