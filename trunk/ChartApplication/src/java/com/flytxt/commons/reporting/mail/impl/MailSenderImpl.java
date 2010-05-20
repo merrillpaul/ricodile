@@ -116,28 +116,26 @@ public class MailSenderImpl implements MailSender {
 			msg.setContent(multipart);
 			msg.setSentDate(new Date());
 
-
-			for (String recepient :  mail.getRecipients())
+                        if( mail.getToRecipients()!=null)
+			for (String recepient :  mail.getToRecipients())
 			{
-				Message.RecipientType recipientType = Message.RecipientType.TO;
+				Message.RecipientType recipientType = Message.RecipientType.TO;				
 
-				/*StringTokenizer tokenizer = new StringTokenizer(recepient,":");
-				if (tokenizer.countTokens() == 2)
-				{
-					String type = tokenizer.nextToken();
-					if ("TO".equalsIgnoreCase(type))
-					{
-						recipientType = Message.RecipientType.TO;
-					}
-					else if ("CC".equalsIgnoreCase(type))
-					{
-						recipientType = Message.RecipientType.CC;
-					}
-					else if ("BCC".equalsIgnoreCase(type))
-					{
-						recipientType = Message.RecipientType.BCC;
-					}
-				}*/
+				msg.addRecipient(recipientType, new InternetAddress(recepient));
+			}
+
+                        if( mail.getCcRecipients()!=null)
+			for (String recepient :  mail.getCcRecipients())
+			{
+				Message.RecipientType recipientType = Message.RecipientType.CC;
+
+				msg.addRecipient(recipientType, new InternetAddress(recepient));
+			}
+
+                         if( mail.getBccRecipients()!=null)
+			for (String recepient :  mail.getBccRecipients())
+			{
+				Message.RecipientType recipientType = Message.RecipientType.BCC;
 
 				msg.addRecipient(recipientType, new InternetAddress(recepient));
 			}
@@ -151,5 +149,8 @@ public class MailSenderImpl implements MailSender {
 			throw new MailException(e);
 		}
     }
+
+
+
 
 }
