@@ -56,7 +56,10 @@ public class FusionBarChartGenerator extends AbstractFusionChartGenerator {
             for(String seriesName: _dataSet.getSeriesNames()){
 
                 Set set =  dataSets.get(seriesName).createSetNode();
-                set.setValue(category.getDataSet(seriesName).getValue());
+                 if(category.getDataSet(seriesName)!=null)
+                 set.setValue(category.getDataSet(seriesName).getValue());
+                else
+                    set.setValue(null);
 
             }
         }

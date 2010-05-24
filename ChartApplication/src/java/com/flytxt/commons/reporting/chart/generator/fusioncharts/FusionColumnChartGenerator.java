@@ -55,7 +55,10 @@ public class FusionColumnChartGenerator extends AbstractFusionChartGenerator {
             for(String seriesName: _dataSet.getSeriesNames()){
 
                 Set set =  dataSets.get(seriesName).createSetNode();
+                if(category.getDataSet(seriesName)!=null)
                 set.setValue(category.getDataSet(seriesName).getValue());
+                else
+                    set.setValue(null);
                 
             }
         }
