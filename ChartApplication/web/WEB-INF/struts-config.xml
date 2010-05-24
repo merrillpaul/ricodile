@@ -16,6 +16,20 @@
         <forward name="initChartConfigTest" path="/chartConfigTest.jsp" redirect="true"/>
         <forward name="welcome"  path="/Welcome.do"/>
     </global-forwards>
+    
+    <form-beans>
+        <form-bean name="ChartConfigInitForm" type="com.flytxt.commons.reporting.web.chart.initchartconfig.ChartConfigInitForm">
+
+            <form-property  name="initParams" type="com.flytxt.commons.reporting.parameter.vo.InitParamVO[]"/>
+            <form-property name="chartId" type="java.lang.Long"/>
+            <form-property name="chartName" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="ChartRunForm" type="com.flytxt.commons.reporting.web.chart.run.ChartRunForm"/>
+
+
+
+    </form-beans>
+
 
     <action-mappings>
         <action input="/" name="ChartRunForm" parameter="dispatch" path="/cleanupChart" scope="session" type="com.flytxt.commons.reporting.web.chart.run.CleanChartContextAction"/>
@@ -27,7 +41,7 @@
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
 
-    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>
     
     <!-- ========================= Tiles plugin ===============================-->
     <!--
@@ -57,7 +71,7 @@
     Paths found in Tiles definitions are relative to the main context.
     -->
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
-        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
         <set-property property="moduleAware" value="true" />
     </plug-in>
     
@@ -67,17 +81,6 @@
             property="pathnames"
             value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
     </plug-in>
-    <form-beans>
-        <form-bean name="ChartConfigInitForm" type="com.flytxt.commons.reporting.web.chart.initchartconfig.ChartConfigInitForm">
-
-          <form-property  name="initParams" type="com.flytxt.commons.reporting.parameter.vo.InitParamVO[]"/>
-         <form-property name="chartId" type="java.lang.Long"/>
-          <form-property name="chartName" type="java.lang.String"/>
-        </form-bean>
-            <form-bean name="ChartRunForm" type="com.flytxt.commons.reporting.web.chart.run.ChartRunForm"/>
-
-
-
-    </form-beans>
+  
   
 </struts-config>
