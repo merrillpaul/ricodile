@@ -107,7 +107,7 @@ public class ChartConfigInitAction extends ChartBaseAction {
         InitParamVO[] initParams = initForm.getChartInitParams();
         
         String chartRunSessionId =
-                "ChartRun_"+new RandomStringGenerator().getRandomString(10);
+                "ChartRun_"+System.currentTimeMillis();//new RandomStringGenerator().getRandomString(10);
 
         ChartConfig chart =  ServiceFactory.getChartConfigService()
                 .getChartConfig(chartName);
