@@ -24,6 +24,8 @@
         <p><bean:message key="welcome.message"/></p>
 
         <html:link forward="initChartConfigTest" >Init Chart Configtest</html:link>
+
+        <a href="charts/chart.jsp">ChartExt Test</a>
         
     </body>
 </html:html>
