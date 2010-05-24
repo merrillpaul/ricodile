@@ -18,7 +18,6 @@ import com.flytxt.commons.reporting.mail.MailMessage;
 import com.flytxt.commons.reporting.mail.MailSender;
 import com.flytxt.commons.reporting.mail.MailSessionProvider;
 import java.util.Date;
-import java.util.StringTokenizer;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
