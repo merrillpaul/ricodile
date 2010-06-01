@@ -13,14 +13,18 @@ import com.flytxt.commons.reporting.chart.ChartContextCreator;
 import com.flytxt.commons.reporting.chart.ChartContextCreatorFactory;
 import com.flytxt.commons.reporting.chart.ChartRunMap;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
+import com.flytxt.commons.reporting.constants.ReportConstants.SystemParameters;
 import com.flytxt.commons.reporting.factory.ServiceFactory;
+import com.flytxt.commons.reporting.parameter.ParameterConstants.ValueClassType;
 import com.flytxt.commons.reporting.parameter.objects.Parameter;
+import com.flytxt.commons.reporting.parameter.provider.DateProvider;
 import com.flytxt.commons.reporting.parameter.provider.InitialParameterProvider;
 import com.flytxt.commons.reporting.parameter.vo.InitParamVO;
 import com.flytxt.commons.reporting.web.chart.context.HttpSessionAwareChartRunMap;
 import com.flytxt.commons.reporting.web.chart.context.WebChartContextCreator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.actions.DispatchAction;
 
@@ -49,6 +53,15 @@ public abstract class ChartBaseAction extends DispatchAction{
         for(InitParamVO initParam : initParams){
             initialParameters.add(provider.prepareParameter(initParam));
         }
+
+        // REQUESTED TIME
+        InitParamVO requestedParam =  new InitParamVO();
+        requestedParam.setName(SystemParameters.FLYTXT_REQUESTED_TIME.name());
+        requestedParam.setType(ValueClassType.TIMESTAMP.getKey());
+        requestedParam.setValue(DateProvider.getDateTimeProvider().formatDate(new Date()));
+        initialParameters.add(provider.prepareParameter(requestedParam));
+
+
         context.setInitialParameters(initialParameters);
     }
 
