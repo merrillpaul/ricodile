@@ -286,13 +286,20 @@ public final class ChartConstants {
     }
 
 
-    public interface ChartJsonContstants{
+    public interface ChartJsonConstants{
 
         String CHART_RUN_SESSION_ID = "chartRunSessionId";
         String CHART_ID = "chartId";
         String CHART_FRAMEWORK_ATTRS = "frameworkAttrs";
         String CHART_INFO = "chartInfo";
         String CHART_FOUND="validChart" ;
+    }
+
+
+    public enum ChartResultSetConstants{
+        SERIESNAME,
+        SERIESVALUE,
+        DRILLDOWN;
     }
 }
 

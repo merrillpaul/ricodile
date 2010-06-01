@@ -21,7 +21,9 @@ public class ReportConstants {
     public enum SystemParameters{
         FLYTXT_REPORT_USER_ID,
         FLYTXT_REPORT_USER_NAME,
-        FLYTXT_REPORT_USER_PARTNER_ID;
+        FLYTXT_REPORT_USER_PARTNER_ID,
+        FLYTXT_REQUESTED_TIME
+        ;
     }
 
 
