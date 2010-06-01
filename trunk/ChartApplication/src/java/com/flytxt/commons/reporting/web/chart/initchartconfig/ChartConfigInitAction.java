@@ -39,6 +39,9 @@ import org.apache.struts.action.ActionMapping;
  */
 public class ChartConfigInitAction extends ChartBaseAction {
     
+
+
+
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
     
