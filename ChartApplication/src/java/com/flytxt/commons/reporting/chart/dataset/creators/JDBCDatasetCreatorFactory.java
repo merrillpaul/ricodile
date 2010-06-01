@@ -13,7 +13,9 @@
 package com.flytxt.commons.reporting.chart.dataset.creators;
 
 import com.flytxt.commons.reporting.chart.dataset.creators.columnbar.ResultsetAwareSimpleColumnBarDatasetCreator;
+import com.flytxt.commons.reporting.chart.dataset.creators.multiseries.ResultsetAwareMultiSeriesAreaDatasetCreator;
 import com.flytxt.commons.reporting.chart.dataset.creators.multiseries.ResultsetAwareMultiSeriesColumnBarDatasetCreator;
+import com.flytxt.commons.reporting.chart.dataset.creators.multiseries.ResultsetAwareMultiSeriesLineDatasetCreator;
 import com.flytxt.commons.reporting.chart.dataset.creators.pie.ResultsetAwarePieDatasetCreator;
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartType;
 import java.util.HashMap;
@@ -40,10 +42,18 @@ public final class JDBCDatasetCreatorFactory {
         chartTypeCreatorMap =
                 new HashMap<ChartType, Class<? extends JDBCResultsetAwareCreator>>();
         chartTypeCreatorMap.put(ChartType.PIE, ResultsetAwarePieDatasetCreator.class);
+        chartTypeCreatorMap.put(ChartType.RING, ResultsetAwarePieDatasetCreator.class);
+        chartTypeCreatorMap.put(ChartType.LINE, ResultsetAwarePieDatasetCreator.class);
+        chartTypeCreatorMap.put(ChartType.AREA, ResultsetAwarePieDatasetCreator.class);
+
         chartTypeCreatorMap.put(ChartType.BAR, ResultsetAwareSimpleColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.COLUMN, ResultsetAwareSimpleColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.MULTI_SERIES_BAR, ResultsetAwareMultiSeriesColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.MULTI_SERIES_COLUMN, ResultsetAwareMultiSeriesColumnBarDatasetCreator.class);
+        chartTypeCreatorMap.put(ChartType.MULTI_SERIES_LINE, ResultsetAwareMultiSeriesLineDatasetCreator.class);
+        chartTypeCreatorMap.put(ChartType.MULTI_SERIES_AREA, ResultsetAwareMultiSeriesAreaDatasetCreator.class);
+
+
    }
 
 
