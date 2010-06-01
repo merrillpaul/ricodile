@@ -9,9 +9,9 @@
 package com.flytxt.commons.reporting.web.chart.initchartconfig.json;
 
 import com.flytxt.commons.reporting.chart.ChartContext;
-import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonContstants.CHART_RUN_SESSION_ID;
-import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonContstants.CHART_ID;
-import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonContstants.CHART_FOUND;
+import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonConstants.CHART_RUN_SESSION_ID;
+import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonConstants.CHART_ID;
+import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonConstants.CHART_FOUND;
 import com.flytxt.commons.reporting.web.json.charts.AbstractChartJsonMap;
 import com.flytxt.commons.reporting.web.json.charts.ChartInfoJsonMap;
 import com.flytxt.commons.reporting.web.json.charts.ChartJsonMap;
