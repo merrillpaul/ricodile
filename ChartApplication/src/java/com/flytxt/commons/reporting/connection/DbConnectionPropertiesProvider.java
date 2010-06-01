@@ -32,6 +32,7 @@ public final class DbConnectionPropertiesProvider {
             InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(path.replace(".", "/") + "/dsconnection.properties");
            
             dbProperties.load(is);
+            
         } catch (IOException ex) {
             Logger.getLogger(DbConnectionPropertiesProvider.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
