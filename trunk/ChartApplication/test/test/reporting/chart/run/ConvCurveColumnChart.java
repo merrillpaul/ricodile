@@ -61,7 +61,7 @@ public class ConvCurveColumnChart {
 
        
 
-             parameterIds =  new ArrayList<Long>();
+        parameterIds =  new ArrayList<Long>();
 
         Parameter p = new Parameter();
         p.setValueClassType(ValueClassType.INTEGER);
@@ -79,7 +79,7 @@ public class ConvCurveColumnChart {
         assertNotNull(p);
         assertNotNull(p.getId());
         assertNotSame(p.getId(), 0);
-         parameterIds.add(p.getId());
+        parameterIds.add(p.getId());
 
 
         p = new Parameter();
@@ -186,10 +186,7 @@ public class ConvCurveColumnChart {
 
         ChartConfig cfg = service.getChartConfig(chartId);
 
-        ChartContext ctx =
-                ChartContextCreatorFactory
-                .getCreator(ChartRendererType.FUSION)
-                .createChartContext(cfg, new ReportUser(1, 1, "Merrill"));
+        ChartContext ctx =   ChartContextCreatorFactory .getCreator(ChartRendererType.FUSION).createChartContext(cfg, new ReportUser(1, 1, "Merrill"));
 
           InitParamVO  INIT_EVENT_SYSTEM_ID =  new InitParamVO();
          INIT_EVENT_SYSTEM_ID.setName("INIT_EVENT_SYSTEM_ID");
@@ -205,8 +202,7 @@ public class ConvCurveColumnChart {
 
         ctx.setInitialParameters(initialParameters);
        
-        ChartEngine engine =
-        ChartEngineFactory.getEngine(ctx);
+        ChartEngine engine =   ChartEngineFactory.getEngine(ctx);
         try {
             ChartOutput output = engine.fillUp(ctx);
             System.out.println(new String(output.getContent()));
