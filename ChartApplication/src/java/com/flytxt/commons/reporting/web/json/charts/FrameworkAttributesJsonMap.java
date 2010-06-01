@@ -14,7 +14,7 @@ package com.flytxt.commons.reporting.web.json.charts;
 
 import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.factory.ServiceFactory;
-import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonContstants.CHART_FRAMEWORK_ATTRS;
+import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonConstants.CHART_FRAMEWORK_ATTRS;
 
 
 /**
