@@ -63,7 +63,7 @@ public class SimpleChartWithoutParameterSave {
         cfg.setDescription("Status Id Pie Stupid Chart");
         cfg.setHeight(400);
         cfg.setWidth(500);
-        cfg.setName("Stupid PIE"+new RandomStringGenerator().getRandomString(3));
+        cfg.setName("TEST PIE");
         cfg.setShowLegend(true);
         cfg.setShowTitle(true);
 
