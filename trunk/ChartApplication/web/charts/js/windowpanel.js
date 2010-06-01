@@ -8,7 +8,7 @@
 
  windowpanel = function(){
 
-  this.openChartWindow = new chartinitiator(this);
+  this.openChartWindow = new Flytxt.charts.ChartCreaterWindow(this);
  //this.openChartWindow.on('insertChartPanel',this.insertChartPanel,this);
 
  windowpanel.superclass.constructor.call(this, {

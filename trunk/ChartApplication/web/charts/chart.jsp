@@ -26,11 +26,11 @@
 	<script type="text/javascript" src="../ext/fusionMedia/js/uxfusion.js"></script>
 
 
-         <script type="text/javascript" src="../charts/js/fusionpanelcreator.js"></script>
-         <script type="text/javascript" src="../charts/js/chartconstructor.js"></script>
-        <script type="text/javascript" src="../charts/js/chartconfigpanel.js"></script>
+         <script type="text/javascript" src="../charts/js/chartfwk/ActualFusionPanel.js"></script>
+         <script type="text/javascript" src="../charts/js/chartfwk/ChartInitiator.js"></script>
+        <script type="text/javascript" src="../charts/js/ChartParameterConfigPanel.js"></script>
         
-        <script type="text/javascript" src="../charts/js/chartinitiator.js"></script>
+        <script type="text/javascript" src="../charts/js/ChartCreaterWindow.js"></script>
         <script type="text/javascript" src="../charts/js/windowpanel.js"></script>
         <script type="text/javascript" src="../charts/js/starter.js"></script>
 
