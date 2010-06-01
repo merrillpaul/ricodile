@@ -15,7 +15,7 @@ package com.flytxt.commons.reporting.web.json.charts;
 import com.flytxt.commons.reporting.chart.entity.ChartConfig;
 import java.util.HashMap;
 import java.util.Map;
-import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonContstants.CHART_INFO;
+import static com.flytxt.commons.reporting.constants.ChartConstants.ChartJsonConstants.CHART_INFO;
 
 /**
  *
