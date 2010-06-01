@@ -14,17 +14,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * 
+ * @author vishnu.sankar
+ */
 public class ResultsetAwareMultiSeriesColumnBarDatasetCreator
         extends MultiSeriesColumnBarDatasetCreator implements JDBCResultsetAwareCreator {
     private ChartResultSetPreparer resultSetPreparer;
 
     public ResultsetAwareMultiSeriesColumnBarDatasetCreator () {
     }
-
-   
-
-   
 
    /**
       * The query might be with a series name or without one
@@ -38,33 +37,15 @@ public class ResultsetAwareMultiSeriesColumnBarDatasetCreator
         try {
             MultiseriesColumnBarDataSet dataSet = this.getDataSet();
             ResultSet resultSet = this.resultSetPreparer.getResultSet(this, chartContext);
-            ResultSetMetaData rsmds = resultSet.getMetaData();
-            int noColumns = rsmds.getColumnCount();
-            int seriesColumnIndex = -1;
-            if(noColumns==3){
-                seriesColumnIndex=3;
-            }else if(noColumns>3){
-
-                for(int i=0;i<noColumns;i++){
-                 if("seriesname".equalsIgnoreCase( rsmds.getColumnName((i+1)) ))
-                 {
-                     seriesColumnIndex = (i+1);
-                     break;
-                 }
-                }
-            }
-
-
-
+            ResultSetMetaData rsmds = resultSet.getMetaData(); 
+            ResultSetColumnInfo columnInfo = this.resultSetPreparer.getColumnInfo(rsmds);
             while (resultSet.next()) {
                 MultiSeriesCategory msc =
                 dataSet.addCategory(resultSet.getString(1));
-
-                MultiSeriesDataSet msds=
-                dataSet.addDataSet(msc.getLabel(),seriesColumnIndex==-1?null:resultSet.getString(seriesColumnIndex), resultSet.getString(2));
-
-
-
+                for(SeriesColumnNameMapping mapping :columnInfo.getSeriesColumns()){
+                   MultiSeriesDataSet msds=
+                         dataSet.addDataSet(msc.getLabel(),mapping.seriesColumnName==null?null:resultSet.getString(mapping.seriesColumnName),resultSet.getString(mapping.valueColumnName));
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResultsetAwareMultiSeriesColumnBarDatasetCreator.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,7 +54,6 @@ public class ResultsetAwareMultiSeriesColumnBarDatasetCreator
             Logger.getLogger(ResultsetAwareMultiSeriesColumnBarDatasetCreator.class.getName()).log(Level.SEVERE, null, ex);
              throw new ChartException(ex);
         }
-
 
     }
 
