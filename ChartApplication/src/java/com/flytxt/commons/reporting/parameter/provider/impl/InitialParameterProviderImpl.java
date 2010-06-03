@@ -84,7 +84,7 @@ public class InitialParameterProviderImpl implements InitialParameterProvider {
                     paramvalue.setValue(Double.valueOf(val));
                     break;
             }*/
-            paramvalue.setValue(value);
+            paramvalue.setValue(val);
             paramValues.add(paramvalue);
 
         }
