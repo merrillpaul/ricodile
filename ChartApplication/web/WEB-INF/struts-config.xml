@@ -24,7 +24,10 @@
             <form-property name="chartId" type="java.lang.Long"/>
             <form-property name="chartName" type="java.lang.String"/>
         </form-bean>
-        <form-bean name="ChartRunForm" type="com.flytxt.commons.reporting.web.chart.run.ChartRunForm"/>
+        <form-bean name="ChartRunForm" type="com.flytxt.commons.reporting.web.chart.run.ChartRunForm">
+         	<form-property  name="initParams" type="com.flytxt.commons.reporting.parameter.vo.InitParamVO[]"/>
+                <form-property  name="chartRunId" type="java.lang.String"/>
+        </form-bean>
 
 
 
