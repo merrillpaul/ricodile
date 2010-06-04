@@ -49,6 +49,9 @@ public final class MailSessionProvider {
     }
 
     public static Session getReportSession(){
+
+
+
         if(reportPlatformMailSession==null){
             reportPlatformMailSession = createSession("ricodile.reports", "reports123");
         }
