@@ -47,22 +47,9 @@ public abstract class ChartBaseAction extends DispatchAction{
 
     protected void prepareInitialParameterValues(ChartContext context, InitParamVO[] initParams) {
 
-        InitialParameterProvider provider =
+         InitialParameterProvider provider =
                 ServiceFactory.getInitialParameterProvider();
-        Collection<Parameter> initialParameters =  new ArrayList<Parameter>();
-        for(InitParamVO initParam : initParams){
-            initialParameters.add(provider.prepareParameter(initParam));
-        }
-
-        // REQUESTED TIME
-        InitParamVO requestedParam =  new InitParamVO();
-        requestedParam.setName(SystemParameters.FLYTXT_REQUESTED_TIME.name());
-        requestedParam.setType(ValueClassType.TIMESTAMP.getKey());
-        requestedParam.setValue(DateProvider.getDateTimeProvider().formatDate(new Date()));
-        initialParameters.add(provider.prepareParameter(requestedParam));
-
-
-        context.setInitialParameters(initialParameters);
+        provider.prepareInitialParameterValues(context, initParams);
     }
 
 

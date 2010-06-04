@@ -22,7 +22,8 @@ public class ReportConstants {
         FLYTXT_REPORT_USER_ID,
         FLYTXT_REPORT_USER_NAME,
         FLYTXT_REPORT_USER_PARTNER_ID,
-        FLYTXT_REQUESTED_TIME
+        FLYTXT_REQUESTED_TIME,
+        FLYTXT_SQL_TZOFFSET_FOR_USER
         ;
     }
 

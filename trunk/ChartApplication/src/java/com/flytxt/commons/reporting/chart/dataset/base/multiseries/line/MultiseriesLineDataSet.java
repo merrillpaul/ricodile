@@ -3,7 +3,7 @@ package com.flytxt.commons.reporting.chart.dataset.base.multiseries.line;
 import com.flytxt.commons.reporting.chart.dataset.base.DataSet; 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public class MultiseriesLineDataSet extends DataSet implements Iterable<MultiSer
     private Collection<String> series;
 
     public MultiseriesLineDataSet () {
-        categories =  new HashMap<String, MultiSeriesCategory>();
+        categories =  new LinkedHashMap<String, MultiSeriesCategory>();
         series =  new ArrayList<String>();
     }
 

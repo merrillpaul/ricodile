@@ -9,6 +9,7 @@ import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.chart.ChartEngine;
 import com.flytxt.commons.reporting.chart.ChartEngineFactory;
 import com.flytxt.commons.reporting.chart.ChartOutput;
+import com.flytxt.commons.reporting.parameter.vo.InitParamVO;
 import com.flytxt.commons.reporting.web.chart.ChartBaseAction;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,12 @@ public class ChartRunAction extends ChartBaseAction {
         ChartRunForm chartForm = (ChartRunForm) form;
         ChartContext ctx =
         getChartRunSessionMapper(request).getContext(chartForm.getChartRunId());
+
+         /* in case on running someinit params are changed*/
+        InitParamVO[] initParams = chartForm.getChartInitParams();
+        if(initParams!=null && initParams.length>0){
+        	 prepareInitialParameterValues(ctx,initParams);
+        }
 
         ChartEngine engine = ChartEngineFactory.getEngine(ctx);
         ChartOutput output = engine.fillUp(ctx);

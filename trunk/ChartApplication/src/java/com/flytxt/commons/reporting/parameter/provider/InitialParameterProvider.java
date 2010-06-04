@@ -8,6 +8,7 @@
  */
 package com.flytxt.commons.reporting.parameter.provider;
 
+import com.flytxt.commons.reporting.chart.ChartContext;
 import com.flytxt.commons.reporting.parameter.objects.Parameter;
 import com.flytxt.commons.reporting.parameter.vo.InitParamVO;
 
@@ -18,4 +19,6 @@ import com.flytxt.commons.reporting.parameter.vo.InitParamVO;
 public interface InitialParameterProvider {
 
     Parameter prepareParameter(InitParamVO initParam);
+
+    void prepareInitialParameterValues(ChartContext context, InitParamVO[] initParams);
 }
