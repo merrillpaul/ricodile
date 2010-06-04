@@ -13,7 +13,7 @@
 package com.flytxt.commons.reporting.chart.dataset.base.multiseries.area;
 
 import com.flytxt.commons.reporting.chart.dataset.base.Category;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -27,7 +27,7 @@ public class MultiSeriesCategory  extends Category{
     public MultiSeriesCategory(String label) {
         super();
         this.setLabel(label);
-        this.seriesValues = new HashMap<String, MultiSeriesDataSet>();
+        this.seriesValues = new LinkedHashMap<String, MultiSeriesDataSet>();
     }
 
    public MultiSeriesDataSet addDataSet(String seriesName,String value){

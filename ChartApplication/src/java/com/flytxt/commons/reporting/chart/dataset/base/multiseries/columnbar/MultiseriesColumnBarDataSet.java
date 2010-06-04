@@ -3,7 +3,7 @@ package com.flytxt.commons.reporting.chart.dataset.base.multiseries.columnbar;
 import com.flytxt.commons.reporting.chart.dataset.base.DataSet; 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class MultiseriesColumnBarDataSet extends DataSet implements Iterable<Mul
     private Collection<String> series;
 
     public MultiseriesColumnBarDataSet () {
-        categories =  new HashMap<String, MultiSeriesCategory>();
+        categories =  new LinkedHashMap<String, MultiSeriesCategory>();
         series =  new ArrayList<String>();
     }
 

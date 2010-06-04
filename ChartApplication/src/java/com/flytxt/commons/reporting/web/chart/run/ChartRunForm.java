@@ -12,6 +12,7 @@
  */
 package com.flytxt.commons.reporting.web.chart.run;
 
+import com.flytxt.commons.reporting.web.chart.initchartconfig.ChartConfigInitForm;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionErrors;
@@ -22,18 +23,15 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author Merrill George Paul(merrill.george@gmail.com)
  */
-public class ChartRunForm extends org.apache.struts.action.ActionForm {
+public class ChartRunForm extends ChartConfigInitForm {
     
-    private String chartRunId;
+   
 
     public String getChartRunId() {
-        return chartRunId;
+      return (String)this.get("chartRunId");
     }
 
-    public void setChartRunId(String chartRunId) {
-        this.chartRunId = chartRunId;
-    }
-
+    
    
 
     /**
