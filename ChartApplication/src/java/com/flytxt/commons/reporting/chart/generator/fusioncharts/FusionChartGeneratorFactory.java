@@ -59,8 +59,8 @@ public class FusionChartGeneratorFactory implements ChartGeneratorFactory {
         generatorMappings.put(ChartType.RING, FusionRingChartGenerator.class);
         generatorMappings.put(ChartType.LINE, FusionLineChartGenerator.class);
         generatorMappings.put(ChartType.AREA, FusionAreaChartGenerator.class);
-        generatorMappings.put(ChartType.COLUMN, FusionColumnChartGenerator.class);
-        generatorMappings.put(ChartType.BAR, FusionBarChartGenerator.class);
+        generatorMappings.put(ChartType.COLUMN, FusionSimpleColumnChartGenerator.class);
+        generatorMappings.put(ChartType.BAR, FusionSimpleBarChartGenerator.class);
         generatorMappings.put(ChartType.MULTI_SERIES_BAR, FusionBarChartGenerator.class);
         generatorMappings.put(ChartType.MULTI_SERIES_COLUMN, FusionColumnChartGenerator.class);
         generatorMappings.put(ChartType.MULTI_SERIES_LINE, FusionMultiSeriesLineChartGenerator.class);

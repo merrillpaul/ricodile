@@ -24,6 +24,8 @@ public class FusionAreaChartGenerator extends AbstractFusionChartGenerator {
 
         Area2D fusionPie =  new Area2D();
         fusionPie.setAnimation("1");
+          fusionPie.setSlantLabels("1");
+        fusionPie.setLabelDisplay("Rotate");
         ChartConfig cfg =  this.ctx.getChart();
         if(cfg.isShowTitle())
         fusionPie.setCaption(this.ctx.getChart().getDescription());
