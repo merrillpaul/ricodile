@@ -31,9 +31,9 @@ public class ChartSwfMapping {
 
        swfMap.put(ChartConstants.ChartType.PIE, "Pie3D");
        swfMap.put(ChartConstants.ChartType.AREA, "Area2D");
-       swfMap.put(ChartConstants.ChartType.BAR, "MSBar3D");
+       swfMap.put(ChartConstants.ChartType.BAR, "Bar2D");
        swfMap.put(ChartConstants.ChartType.BUBBLE, "Bubble");
-       swfMap.put(ChartConstants.ChartType.COLUMN, "MSColumn3D");
+       swfMap.put(ChartConstants.ChartType.COLUMN, "Column3D");
 
        swfMap.put(ChartConstants.ChartType.COLUMN_LINE_DUAL_Y_COMBO, "MSColumn3DLineDY");
        swfMap.put(ChartConstants.ChartType.COLUMN_LINE_SINGLE_Y_COMBO, "MSColumnLine3D");

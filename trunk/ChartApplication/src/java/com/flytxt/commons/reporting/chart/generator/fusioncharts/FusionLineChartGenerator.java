@@ -24,6 +24,8 @@ public class FusionLineChartGenerator extends AbstractFusionChartGenerator {
 
         Line fusionPie =  new Line();
         fusionPie.setAnimation("1");
+          fusionPie.setSlantLabels("1");
+        fusionPie.setLabelDisplay("Rotate");
         ChartConfig cfg =  this.ctx.getChart();
         if(cfg.isShowTitle())
         fusionPie.setCaption(this.ctx.getChart().getDescription());

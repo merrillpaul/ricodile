@@ -25,7 +25,8 @@ public class FusionColumnChartGenerator extends AbstractFusionChartGenerator {
 
         MSColumn3D column3d =
                 new MSColumn3D();
-
+          column3d.setSlantLabels("1");
+        column3d.setLabelDisplay("Rotate");
         column3d.setAnimation("1");
         ChartConfig cfg =  this.ctx.getChart();
         if(cfg.isShowTitle())

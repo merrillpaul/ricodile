@@ -27,6 +27,8 @@ public class FusionMultiSeriesLineChartGenerator extends AbstractFusionChartGene
 
         MSLine column3d =    new MSLine();
         column3d.setAnimation("1");
+         column3d.setSlantLabels("1");
+        column3d.setLabelDisplay("Rotate");
         ChartConfig cfg =  this.ctx.getChart();
         if(cfg.isShowTitle())
         column3d.setCaption(this.ctx.getChart().getDescription());

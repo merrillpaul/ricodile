@@ -41,13 +41,14 @@ public final class JDBCDatasetCreatorFactory {
    static{
         chartTypeCreatorMap =
                 new HashMap<ChartType, Class<? extends JDBCResultsetAwareCreator>>();
-        chartTypeCreatorMap.put(ChartType.PIE, ResultsetAwarePieDatasetCreator.class);
+       chartTypeCreatorMap.put(ChartType.PIE, ResultsetAwarePieDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.RING, ResultsetAwarePieDatasetCreator.class);
+
         chartTypeCreatorMap.put(ChartType.LINE, ResultsetAwarePieDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.AREA, ResultsetAwarePieDatasetCreator.class);
-
         chartTypeCreatorMap.put(ChartType.BAR, ResultsetAwareSimpleColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.COLUMN, ResultsetAwareSimpleColumnBarDatasetCreator.class);
+
         chartTypeCreatorMap.put(ChartType.MULTI_SERIES_BAR, ResultsetAwareMultiSeriesColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.MULTI_SERIES_COLUMN, ResultsetAwareMultiSeriesColumnBarDatasetCreator.class);
         chartTypeCreatorMap.put(ChartType.MULTI_SERIES_LINE, ResultsetAwareMultiSeriesLineDatasetCreator.class);
