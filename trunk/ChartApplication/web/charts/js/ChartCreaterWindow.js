@@ -32,7 +32,7 @@
 }
 Ext.extend(Flytxt.charts.ChartCreaterWindow, Ext.Window, {
     getChart: function(){        
-     new Flytxt.charts.ChartInitiator(this.configpanel.chartName.getValue(),{}).on('chartready',this.addFusionchart,this);
+     new Flytxt.charts.ChartInitiator(this.configpanel.chartName.getValue(),{name:'APPLICATION_INSTANCE_PARAM_ID',value:'16522',type:'i'}).on('chartready',this.addFusionchart,this);
 
 
     },
