@@ -6,7 +6,7 @@ Ext.ns('Flytxt.charts');
     Created on : May 18, 2010, 3:41:06 PM
     Author     : vishnu.sankar
  */
-//TODO Creating actual Fusion Panel for  which can embed anywhere 
+//TODO Creating actual Fusion Panel for  which can embed anywhere
  Flytxt.charts.ActualFusionPanel  = function(result,extraConfig){
      this.swfType = result.frameworkAttrs.fusionSWFFile;
      this.chartTitle = result.chartInfo.title;
@@ -19,7 +19,11 @@ Ext.ns('Flytxt.charts');
      this.flytxtChartUrl = url;
 
 
-     var initConfig = { bodyStyle:'padding:5px',
+     var initConfig = { bodyStyle:'padding:5px;',
+	     width:this.chartWidth,
+          height: this.chartHeight,
+          border:false,
+          autoScroll:false,
         chartCfg   :{
                                 id   : Ext.id()/*,
                                 chartWidth  :this.chartWidth+10,
@@ -28,25 +32,20 @@ Ext.ns('Flytxt.charts');
                          },
           chartURL   : '../ext/fusionMedia/swf/'+this.swfType+'.swf',
           dataURL   : this.flytxtChartUrl ,
-          autoMask : true,
+          autoMask : true/*,
           width:this.chartWidth,
-          height: this.chartHeight,
-          tbar:[
-              {
-                  text:'Refresh',
-                  handler:this.refreshFlyChart,
-                  scope:this
-              }
-          ]
+          height: this.chartHeight*/
+
      };
     Ext.apply(initConfig, extraConfig);
     Flytxt.charts.ActualFusionPanel.superclass.constructor.call(this, initConfig);
     this.on('beforedestroy', this.cleanUpChart, this);
+	this.on('render',this.registerResizeHandles,this);
 
 
 }
 Ext.extend(Flytxt.charts.ActualFusionPanel, Ext.ux.Chart.Fusion.Panel, {
-    
+
     refreshFlyChart:function(){
        // this.setChartDataURL(this.flytxtChartUrl);
         Ext.Ajax.request({
@@ -57,6 +56,10 @@ Ext.extend(Flytxt.charts.ActualFusionPanel, Ext.ux.Chart.Fusion.Panel, {
 			});
 
     },
+
+	registerResizeHandles: function(){
+
+	},
 
     onChartXMLSuccess: function(response){
        this.setChartData(response.responseText,true);
@@ -71,8 +74,8 @@ Ext.extend(Flytxt.charts.ActualFusionPanel, Ext.ux.Chart.Fusion.Panel, {
 	// this.timerDelayer.delay(1000*refreshPeriod);
 
 
-       
-        
+
+
     },
 
 
@@ -95,12 +98,12 @@ Ext.extend(Flytxt.charts.ActualFusionPanel, Ext.ux.Chart.Fusion.Panel, {
         if (this.timerDelayer != null) {
 				this.timerDelayer.cancel();
 	}
-	
+
     },
 
     cleanUpChart: function(){
         this.stopRefresh();
-        Ext.Ajax.request({
+        FlyAjax.requestData({
 			   url: '../cleanupChart.do',
 			   params: { dispatch:'clean',chartRunId:this.chartRunId }
 			});
