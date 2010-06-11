@@ -10,7 +10,7 @@ package com.flytxt.commons.reporting.chart;
 
 import com.flytxt.commons.reporting.chart.entity.ChartConfig; 
 import com.flytxt.commons.reporting.constants.ChartConstants.ChartRendererType;
-import com.flytxt.commons.reporting.constants.ChartRenderTarget; 
+import com.flytxt.commons.reporting.constants.RenderTarget;
 import com.flytxt.commons.reporting.context.BaseContext;
 
 
@@ -38,7 +38,7 @@ public class ChartContext extends BaseContext {
     /**
      * the chartRenderTarget
      */
-    private ChartRenderTarget renderTarget;
+    private RenderTarget renderTarget;
 
 
    
@@ -67,11 +67,11 @@ public class ChartContext extends BaseContext {
 
    
 
-    public ChartRenderTarget getRenderTarget() {
+    public RenderTarget getRenderTarget() {
         return renderTarget;
     }
 
-    public void setRenderTarget(ChartRenderTarget renderTarget) {
+    public void setRenderTarget(RenderTarget renderTarget) {
         this.renderTarget = renderTarget;
     }
 
